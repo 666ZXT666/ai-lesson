@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>网易云音乐年终总结html5</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        .box{
+            width: 375px;
+            height: 375px;
+            background-color: red;
+
+        }
+    </style>
+    <link rel="stylesheet" href="./common.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.0.2/css/swiper.min.css">
+</head>
+<body>
+    <audio id="j-bgm" src="./bgm.mp3" ></audio>
+    <div class="next-view-c"></div>
+    <div class="music-btn off"></div>
+        <!-- 滑页操作 -->
+    <div class="swiper-container">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">
+            <div class="view index">
+                <div class="logo-c"></div>
+            </div>
+            </div>
+            <div class="swiper-slide"></div>
+            <div class="swiper-slide"></div>
+            <div class="swiper-slide"></div>
+            <div class="swiper-slide"></div>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.0.2/js/swiper.min.js"></script>
+    <script>
+        const aut = document.getElementById('j-bgm')
+        //选择器
+        const musicBtn = document.querySelector('.music-btn')
+        let isPause = true
+        musicBtn.addEventListener('click',function(){
+            if(isPause){
+                aut.play()
+                isPause = false
+            }
+            else{
+                aut.pause()
+                isPause = true
+            }
+          musicBtn.classList.toggle('off')
+        })
+
+        // 滑页操作
+        var swiper = new Swiper('.swiper-container', {
+            direction:'vertical'
+        })
+    </script>
+</body>
+</html>
