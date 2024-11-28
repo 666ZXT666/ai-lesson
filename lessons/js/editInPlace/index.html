@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>editInPlace 哔哩哔哩</title>
+</head>
+<body>
+    <div id="app">
+       <div id="epl">
+         <span id="content">男的学院一等奖学金获得者</span>
+        <input type="text" id="input" value="男的学院一等奖学金获得者">
+        <input type="button" id ="save" value="Save">
+        <input type="button" id ="cancle" value="Cancle">
+        </div> 
+    </div>
+    <script>
+        //dom js html 节点对象 动态操作HTML 
+        const content = document.getElementById('content');
+        const input = document.getElementById('input');
+        const save = document.getElementById('save');
+        const cancle = document.getElementById('cancle');
+        
+        //编辑状态
+        function convertInEdit(){
+            input.style.display='inline';
+            save.style.display='inline';
+            cancle.style.display='inline';
+            content.style.display='none';
+        }
+        // 文本状态
+        function convertToText(){
+        input.style.display='none';
+        save.style.display='none';
+        cancle.style.display='none';
+        content.style.display='inline';
+        }
+        convertToText();
+
+        content.addEventListener('click',
+        function(){
+            //确保输入框里是最新的签名
+            convertInEdit();
+            input.value = content.innerText;
+        }
+        );
+        save.addEventListener('click',
+        function(){
+            content.innerText = input.value;
+            convertToText();
+        });
+        cancle.addEventListener('click',
+        function(){
+            convertToText();
+        });
+    </script>
+</body>
+</html>
