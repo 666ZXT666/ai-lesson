@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Users Rag chatbot</title>
+</head>
+<link href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet">
+<body>
+    <div class="container">
+        <div class="row col-md-6 col-md-offset-3">
+            <table class ="table table-striped" id="user_table">
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Hometown</th>
+                </tr>
+                <tbody>
+                </tbody>
+            </table>
+
+          <div class="row">
+            <form name="aiForm">
+              <div class="form-group">
+                <input type="text" class="form-control" name="question" placeholder="Enter your name" required>
+                <button type="submit" class="btn btn-default" name="btn">查询</button>
+            </form>
+
+          </div>
+          <div class="row" id="message">
+          </div>
+        </div>
+    </div>
+</body>
+<script>
+    const tBody = document.querySelector('table tbody');
+    const oForm = document.forms['aiForm'];
+    let usersData;
+
+    //发起请求
+    fetch('http://localhost:8080/users')
+.then(response => response.json())//.then代表数据到达前端 二进制数据转成json
+.then(users => {
+    usersData = users;
+//  console.log(data);
+for(let user of users){
+  const tr = document.createElement('tr');
+  tBody.appendChild(tr);
+
+  for (let key in user) {
+        const td = document.createElement('td');
+        td.innerText = user[key];
+        tr.appendChild(td);
+      }
+}
+
+})
+.catch(error => {
+  console.error('Error:', error);
+});
+
+oForm.addEventListener('submit', function(e) {
+    console.log('event');
+    e.preventDefault();// 阻止表单的默认行为
+    //fetch在页面不刷新的时候向ai server发出请求 向ai server 发出请求
+    // web2.0 动态页面开发 fetch来实现 js可以主动拉取数据
+    const question = oForm.question.value.trim();
+    if(!question)
+    { 
+        alert('Please enter your question');
+        return;
+    }
+
+    fetch(`http://localhost:1314/api?question=${question}&data=${JSON.stringify(usersData)}`)
+    .then(response => response.json())//.then代表数据到达前端 二进制数据转成json
+  .then(data => {
+    console.log(data.result);
+    document.getElementById('message').innerHTML = data;
+
+});
+
+});
+  //发起请求
+</script>
+</html>
