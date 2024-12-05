@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+       function mySetInterval(callback, delay) {
+    let timer = {
+        id: null
+    };
+    
+    function repeat() {
+        console.log('aaaaa');
+        callback();
+        // 存储新的定时器ID
+        timer.id = setTimeout(repeat, delay);
+    }
+    
+    timer.id = setTimeout(repeat, delay);
+    return timer;
+}
+
+
+function myClearInterval(timer) {
+    clearTimeout(timer.id);
+}
+
+const timer = mySetInterval(() => {
+    console.log('每隔1秒执行一次，可以终止');
+}, 1000);
+setTimeout(() => {
+    myClearInterval(timer);
+    console.log('定时器已停止');
+}, 5000);
+    </script>
+</body>
+</html>

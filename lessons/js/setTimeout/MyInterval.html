@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="btn">你好啊</button>
+    <script>
+    let foo=  function customSetInterval(time){
+            foo.setIntervalId = 0;
+            function loop(){   
+          foo.setIntervalId =setTimeout(()=>{
+                    console.log('1s后执行');
+                    loop();
+                },time);
+            }
+            loop();
+          return ()=> clearTimeout(setIntervalId);
+        }
+        foo(1000);
+        let btn = document.getElementById('btn');
+        btn.addEventListener('click',function(){
+            console.log(foo.setIntervalId);
+           clearTimeout(foo.setIntervalId);
+        })
+    </script>
+</body>
+</html>
