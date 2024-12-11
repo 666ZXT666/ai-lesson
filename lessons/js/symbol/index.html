@@ -19,6 +19,20 @@ const classMates = {
 [Symbol('olivia')]:{grade:80,gender:'female'},
 [Symbol('olivia')]:{grade:80,gender:'female'},
         }
+console.log(classMates[name]);
+// 二维
+for(let [key,value] of Object.entries(classMates)){
+    console.log(key,value);
+}
+
+for(const key in classMates){
+    console.log(key,classMates[key]);
+}
+const syms = Object.getOwnPropertySymbols(classMates);
+const data = syms.map(sym => classMates[sym].grade);
+console.log(data);
+// 属性描述符
+console.log(Object.getOwnPropertyDescriptors(classMates));
 </script>
 </body>
 </html>
