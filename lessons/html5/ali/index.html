@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" style="font-size: 75px;">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>阿里双十一</title>
+<script>
+    //阻塞 来动态设置 html font-size
+    function calc(){
+        const w = document.documentElement.clientWidth;
+        document.documentElement.style.fontSize = w / 10 + 'px';
+        console.log(w);
+    }   
+    calc();
+
+    window.onresize = function(){
+        calc();
+    }
+</script>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+</style>
+<style>
+.box {
+    width: 5rem;
+    height: 5rem;
+    background-color: red;
+  display: inline-block;
+}
+.box2 {
+    width: 5rem;
+    height: 10rem;
+    display: inline-block;
+    background-color: green;
+}
+</style>
+</head>
+<body>
+    <div style="font-size: 0;"> 
+    <div style="font-size: 50px;" class="box">111</div>
+    <div class="box" style="font-size: 50px;">222</div>
+</div>
+</body>
+</html>

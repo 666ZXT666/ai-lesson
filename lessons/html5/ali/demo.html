@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en" style="font-size: 75px;">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>阿里双十一</title>
+<script>
+    //阻塞 来动态设置 html font-size
+    function calc(){
+        const w = document.documentElement.clientWidth;
+        document.documentElement.style.fontSize = w / 10 + 'px';
+        console.log(w);
+    }   
+    calc();
+
+    window.onresize = function(){
+        calc();
+    }
+</script>
+  <style>
+  * {
+    margin: 0;
+    padding: 0;
+  }
+  html,body {
+    height: 100%;
+    /* background-color: green; */
+    background-color: green;
+  }
+  
+ ul,li{
+    list-style:none;
+ }
+
+  .item-section {
+    min-height: 100%;
+    background-color: #ee0a3b;
+    position: relative;
+    font-size: 24px;
+  }
+  .item-section_header img {
+    width: 10rem;
+  }
+
+  .item-section ul {
+    list-style: none;
+    padding:0.133333rem;
+}
+
+.flag {
+    display: table;
+    width: 100%;
+    margin-bottom: 1px;
+    background-color: #fff;
+}
+.flag .flag-item{
+    display: table-cell;
+}
+.flag .flag-item.figure{
+    width: 2.346667rem;
+    height: 2.346667rem;
+}
+.flag .flag-tittle a{
+    font-size: 14px;
+    color: #333;
+    line-height: 1.25;
+    text-align: center;
+}
+  </style>
+</head>
+<body>
+    <div class="item-section">
+        <div class="item-section_header">
+            <h2>
+                <img src="http://gw.alicdn.com/mt/TB1PNLZKXXXXXaTXXXXXXXXXXXX-750-481.jpg" alt="">
+            </h2>
+            <ul>
+                <li class="flag">
+                    <a href="#" class="figure flag-item">
+                        <img src="" alt="">
+                    </a>
+                    <div class="figcation flag-item">
+                        <div class="flag-tatle">
+                            <a href="#">Carter'年式灰色长袖</a>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
