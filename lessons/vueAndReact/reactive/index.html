@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>响应式API</title>
+</head>
+<body>
+    <div id="container">1</div>
+    <button id="button">+1</button>
+    <div id="count">2</div>
+    <button id="button2">*2</button>
+</body>
+
+<script>
+//JSON 对象， JSON数据
+    var obj = {
+        value: 1 ,//count
+        count:2
+    }
+// 拦截器 修改值之前 
+// 属性定义 
+obj.__value = obj.value; // 先初始化 __value
+Object.defineProperty(obj,'value',{
+    get:function(){
+        return this.__value;
+    },
+    set:function(newVal){
+        this.__value = newVal;
+        document.getElementById('container').innerHTML = this.__value;
+    }
+})
+
+obj.__count = obj.count;
+Object.defineProperty(obj,'count',{
+    get:function(){
+        return this.__count;
+    },
+    set:function(newVal){
+        this.__count = newVal;
+        document.getElementById('count').innerHTML = this.__count;
+    }
+})
+
+    document.getElementById('button')
+    .addEventListener('click',function(){
+        obj.value++;
+    })
+
+    document.getElementById('button2')
+    .addEventListener('click',function(){
+        obj.count *= 2;
+    })
+</script>
+</html>

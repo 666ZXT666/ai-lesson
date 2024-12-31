@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="container">1</div>
+    <div id="count">2</div>
+    <button id="button">+1</button>
+    <button id="btn">*2</button>
+    <script>
+
+        // 匿名函数 => 立即执行 + 回调函数（事件处理函数，定时器，文件操作）
+        (function(){
+            // 函数作用域 
+            function getProxy(target,func){
+                // es6 proxy 对象代理
+                const proxy = new Proxy(target,{
+                    get:function(target,key){
+                        return target[key];
+                    },
+                    set:function(target,key,value){
+                        target[key] = value;
+                        func(key,value);
+                        return true;
+                    }
+                });
+                return proxy;
+            }
+            this.getProxy = getProxy;
+        })();
+    
+        let obj = { //包装好的对象
+            value:1,
+            count:2
+        }
+    
+        var newObj = getProxy(obj,function(key,value){
+            if(key === 'value'){
+                document.getElementById('container').innerHTML = value;
+            }
+            if(key === 'count'){
+                document.getElementById('count').innerHTML = value;
+            }
+            console.log('数据修改');
+        });
+
+        document.getElementById('button')
+        .addEventListener('click',function(){
+            newObj.value++;
+        })
+
+        document.getElementById('btn')
+        .addEventListener('click',function(){
+            newObj.count *= 2;
+        })
+    </script>
+</body>
+
+</html>
