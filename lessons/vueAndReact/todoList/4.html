@@ -13,7 +13,7 @@
 <body>
     <div id="app">
         <h2>{{title}}</h2>
-        <input type="text" class="inp" v-model="title" 
+        <input type="text" class="inp" value="title" 
           @keydown.enter="addTodo">
         <ul>
             <li v-for="(item,index) in list">
@@ -25,32 +25,13 @@
 </body>
 <script src="https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/vue/3.2.31/vue.global.min.js"></script>
 <script>
-    const App = Vue.createApp(
-        {
-            data(){
-                return {
-                    title:'',
-                    list:[
-                       {title:'吃饭', done:false},
-                       {title:'睡觉', done:true}
-                    ]
-                }
-            },
-            //事件处理函数 方法
-            methods:{
-                addTodo(){
-                    // this.data.todos
-                    this.list.push(
-                        {
-                           title:this.title,
-                           done:false
-                        }
-                        );
-                    this.title = '';
-                }
-            }
-        }
-    )
+    const App = {
+        data(){
+            return {
+                title: 'todos'            }
+        },
+    }
+    Vue.createApp(App).mount('#app')
     App.mount('#app')
 </script>
 </html>

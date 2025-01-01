@@ -20,12 +20,12 @@
     <ul>
       <li v-for="todo in todos" v-model>
         <input type="checkbox" v-model="todo.done">
-        <span :class="{done:todo.done}">{{todo.title}}</span>
+        <span :class={done:todo.done}>{{todo.title}}</span>
       </li>
     </ul>
     <div>
         全选 <input type="checkbox" v-model="allDone">
-        <span>{{active}} / {{all}}</span>
+        <span>{{todosLen}} / {{todos.length}}</span>
     </div>
   </div>
   <script>
@@ -37,6 +37,7 @@
           {title: '吃饭', done: false},
           {title: '睡觉', done: true},
         ],
+        todosLen:this.todos.length
       }
     },
     methods:{

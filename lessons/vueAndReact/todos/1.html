@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>todos</title>
+  <script src="https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/vue/3.2.31/vue.global.min.js"></script>
+  <style>
+  .done {
+    color: gray;
+    text-decoration: line-through;
+  }
+  </style>
+</head>
+<body>
+  <!-- 挂载点，vue 作用范围 -->
+   <div id="app">
+   <h1>{{title}}</h1>
+  <input type="text" v-model="title">
+</div>
+  <script>
+  const App = {
+    data() {
+      return {
+        title: 'todos'
+      }
+    }
+  }
+  Vue.createApp(App).mount('#app')
+  </script>
+</body>
+</html>
