@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D 地球</title>
+</head>
+<body>
+    <!-- html5 画布 -->
+     <canvas id="webglcanvas"></canvas>
+     <script>
+        //DOM 3D 绘制的容器
+        const canvas = document.getElementById('webglcanvas');
+        // 绘制的上下文 2d  su7 webgl 
+        const ctx = canvas.getContext('2d');
+        ctx.beginPath();
+        //圆心
+        let x = canvas.width / 2;
+        let y = canvas.height / 2;
+        let r = 70;
+        let startAngle = 0;
+        let endAngle = Math.PI * 2;
+        let counterClockwise = false;
+
+        ctx.arc(x,y,r,startAngle,endAngle,counterClockwise);
+        ctx.fillStyle = 'red';
+        ctx.strokeStyle = 'blue';
+        ctx.lineWidth = 5;
+        
+        ctx.fill();
+        ctx.stroke();
+
+        ctx.closePath();
+     </script>
+
+</body>
+</html>
