@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>选择器</title>
+    <style>
+        /*相邻兄弟选择器 */
+  
+        h1 + p {
+            color: red;
+        }
+        h1 ~ p{/*不影响得分*/
+            color: blue;
+        }
+        .container > p{/*子选择器*/
+        font-size: bold;
+       }
+      .container p{/*后代选择器*/
+        text-decoration: underline;
+       }
+    </style>
+</head>
+<body>
+  <div class="container">
+    <h1>标题</h1>
+    <p>这是第一段文字</p>
+    <p>这是第二段文字</p>
+    <a href="">链接</a>
+    <span>这是一个span</span>
+    <div class="inner">
+        <p>这是一个内部段落</p>
+    </div>
+  </div>
+</body>
+</html>

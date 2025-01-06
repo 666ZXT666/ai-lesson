@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .float {
+          float: left;
+          width: 100px;
+          height: 100px;
+          background-color: red;
+          margin-right: 10px;
+        }
+        .text {
+          /* 没有开启 BFC */
+          overflow: hidden;
+          background-color: #eee;
+          width: 200px;
+        }
+      </style>
+</head>
+<body>
+    <div class="float"></div>
+    <div class="text">
+      这里是一段很长的文本，用来演示当没有开启 BFC 时，
+      右侧的文字会绕着左侧的浮动元素进行排版，从而形成文字环绕的效果。
+      这里是一段很长的文本，用来演示当没有开启 BFC 时，
+      右侧的文字会绕着左侧的浮动元素进行排版，从而形成文字环绕的效果。
+    </div>
+</body>
+</html>

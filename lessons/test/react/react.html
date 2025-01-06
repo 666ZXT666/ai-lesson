@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/react@17.0.2/umd/react.development.js"></script>
+    <!-- 引入 ReactDOM -->
+    <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.development.js"></script>
+    <!-- 引入 Babel -->
+    <script src="https://unpkg.com/@babel/standalone@7.20.0/babel.min.js"></script>
+    </head>
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+        const {useState} = React;
+        function Fn(){
+            const[count,setCount] = useState(0);
+           function increment(){
+            setCount(count+1);
+        }
+            return (
+            <div>
+                Count : {count}
+                <button onClick={increment}>+1</button>
+            </div>
+                
+            )
+        }
+    ReactDOM.render(<Fn/>,document.getElementById('root'));
+    </script>
+</body>
+</html>

@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <style>
+/* styles.css */
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+header {
+    background-color: #f8f9fa;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    color: #007bff;
+    font-weight: bold;
+}
+
+.user-profile img {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.container {
+    display: flex;
+}
+
+aside {
+    background-color: #fff;
+    width: 200px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.write-article {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.sidebar-nav a {
+    display: block;
+    padding: 10px 0;
+    text-decoration: none;
+    color: #333;
+}
+
+.sidebar-nav .active {
+    color: #007bff;
+}
+
+.sidebar-nav .dropdown {
+    position: relative;
+}
+
+.sidebar-nav .dropdown ul {
+    list-style-type: none;
+    padding-left: 20px;
+    display: none;
+}
+
+.sidebar-nav .dropdown:hover ul {
+    display: block;
+}
+
+main {
+    flex: 1;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-left: 20px;
+}
+
+.search-bar {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.search-bar input {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.search-bar button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+}
+
+.tabs a {
+    display: inline-block;
+    padding: 10px 20px;
+    text-decoration: none;
+    color: #333;
+}
+
+.tabs .active {
+    color: #007bff;
+    border-bottom: 2px solid #007bff;
+}
+
+.articles article {
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #ddd;
+}
+
+.footer-buttons {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+}
+
+.chat-button,
+.more-options {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 50%;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.chat-button i,
+.more-options i {
+    color: #007bff;
+}
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">稀土掘金</div>
+        <nav>
+            <a href="#">创作者中心</a>
+        </nav>
+        <div class="user-profile">
+            <img src="profile.jpg" alt="Profile">
+            <span>会员</span>
+        </div>
+    </header>
+
+    <div class="container">
+        <aside>
+            <button class="write-article">写文章</button>
+            <nav class="sidebar-nav">
+                <a href="#" class="active">首页</a>
+                <div class="dropdown">
+                    <a href="#">内容管理</a>
+                    <ul>
+                        <li><a href="#">文章管理</a></li>
+                        <li><a href="#">专栏管理</a></li>
+                        <li><a href="#">沸点管理</a></li>
+                    </ul>
+                </div>
+                <div class="dropdown">
+                    <a href="#">数据中心</a>
+                    <ul>
+                        <li><a href="#">内容数据</a></li>
+                        <li><a href="#">粉丝数据</a></li>
+                    </ul>
+                </div>
+                <div class="dropdown">
+                    <a href="#">创作成长</a>
+                    <ul>
+                        <li><a href="#">创作等级权益</a></li>
+                        <li><a href="#">创作灵感</a></li>
+                    </ul>
+                </div>
+                <div class="dropdown">
+                    <a href="#">创作工具</a>
+                    <ul>
+                        <li><a href="#">文音导入选发布</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </aside>
+
+        <main>
+            <div class="search-bar">
+                <input type="text" placeholder="请输入标题关键字">
+                <button><i class="fas fa-search"></i></button>
+            </div>
+            <nav class="tabs">
+                <a href="#" class="active">文章</a>
+                <a href="#">草稿箱(7)</a>
+            </nav>
+            <div class="articles">
+                <article>
+                    <h3>JS-手写new</h3>
+                    <p>2024-12-15 20:06 | 226展现 · 23阅读 · 17点赞 · 0评论 · 0收藏</p>
+                </article>
+                <!-- Add more articles here -->
+            </div>
+        </main>
+    </div>
+
+    <footer>
+        <button class="chat-button"><i class="fas fa-comment"></i></button>
+        <button class="more-options"><i class="fas fa-ellipsis-h"></i></button>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

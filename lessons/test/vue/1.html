@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.bootcdn.net/ajax/libs/vue/3.4.9/vue.global.js"></script></head>
+<body>
+    <div id="root">
+        count {{count}}
+        <button @click="increment">+1</button>
+    </div>
+    <script>
+        const {
+            createApp,
+            ref
+        } = Vue;
+        createApp({
+            setup(){
+                function increment(){
+                    count.value ++;
+                    console.log(count);
+                }
+                let count = ref(0);
+                return {
+                    count,
+                    increment
+                };
+            }
+        }).mount('#root'); 
+    </script>
+</body>
+</html>

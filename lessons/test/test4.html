@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>栈结构展示</title>
+    <style>
+        /* 页面布局 */
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f4f4f9;
+        }
+
+        /* 容器，四个栈在同一行 */
+        .container {
+            display: flex;
+            gap: 20px; /* 栈之间的间距 */
+        }
+
+        /* 每个栈的样式 */
+        .stack {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end; /* 使栈底部对齐 */
+            width: 80px;
+            height: 300px;
+            background-color: #e0e0e0;
+            border: 2px solid #ccc;
+            border-radius: 5px;
+        }
+
+        /* 栈内每个对象的样式 */
+        .object {
+            background-color: #4caf50;
+            color: white;
+            text-align: center;
+            margin: 5px;
+            padding: 10px;
+            border-radius: 3px;
+            font-size: 14px;
+            flex-shrink: 0; /* 防止对象缩小 */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="stack">
+
+            <div class="object">全局</div>
+        </div>
+        <div class="stack">
+
+            <div class="object">baz</div>
+            <div class="object">全局</div>
+        </div>
+        <div class="stack">
+            <div class="object">foo</div>
+            <div class="object">baz</div>
+            <div class="object">全局</div>
+        </div>
+    </div>
+</body>
+</html>

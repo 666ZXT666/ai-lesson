@@ -1,0 +1,30 @@
+{
+    "users":[
+    {
+        "id":1,
+        "name":"dengzi"
+    },
+    {
+        "id":2,
+        "name":"xiaoming"
+    },
+    {
+        "id":3,
+        "name":"xiaohong"
+    }
+],
+"posts":[
+    {
+        "id":1,
+        "title":"Post 1",
+        "content":"Post 1 content",
+        "userId":1
+    },
+    {
+        "id":2,
+        "title":"Post 2",
+        "content":"Post 2 content",
+        "userId":2
+    }
+]
+}

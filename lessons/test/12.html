@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>技术社区</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            background-color: #f4f5f5;
+            font-family: -apple-system,system-ui,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,sans-serif;
+        }
+
+        /* 左侧导航栏 */
+        .sidebar {
+            width: 240px;
+            background: white;
+            padding: 20px;
+            height: 100vh;
+            position: fixed;
+        }
+
+        .nav-item {
+            padding: 12px 8px;
+            display: flex;
+            align-items: center;
+            color: #666;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+
+        .nav-item:hover {
+            background: #f4f5f5;
+        }
+
+        .nav-item.active {
+            background: #e8f3ff;
+            color: #1e80ff;
+        }
+
+        /* 主内容区 */
+        .main-content {
+            margin-left: 240px;
+            padding: 20px;
+            flex: 1;
+        }
+
+        /* 文章卡片样式 */
+        .article-card {
+            background: white;
+            padding: 16px;
+            margin-bottom: 8px;
+            border-radius: 4px;
+        }
+
+        .article-title {
+            font-size: 16px;
+            font-weight: 500;
+            color: #1d2129;
+            margin-bottom: 8px;
+        }
+
+        .article-meta {
+            color: #8a919f;
+            font-size: 13px;
+        }
+
+        /* 右侧边栏 */
+        .right-sidebar {
+            width: 300px;
+            margin-left: 20px;
+            position: fixed;
+            right: 20px;
+        }
+
+        /* 顶部导航 */
+        .top-nav {
+            display: flex;
+            margin-bottom: 16px;
+        }
+
+        .nav-tab {
+            margin-right: 24px;
+            padding: 8px 12px;
+            cursor: pointer;
+        }
+
+        .nav-tab.active {
+            color: #1e80ff;
+            border-bottom: 2px solid #1e80ff;
+        }
+    </style>
+</head>
+<body>
+    <!-- 左侧导航栏 -->
+    <div class="sidebar">
+        <div class="nav-item">
+            <span>关注</span>
+        </div>
+        <div class="nav-item active">
+            <span>综合</span>
+        </div>
+        <div class="nav-item">
+            <span>后端</span>
+        </div>
+        <div class="nav-item">
+            <span>前端</span>
+        </div>
+        <div class="nav-item">
+            <span>Android</span>
+        </div>
+        <div class="nav-item">
+            <span>iOS</span>
+        </div>
+        <div class="nav-item">
+            <span>人工智能</span>
+        </div>
+        <div class="nav-item">
+            <span>开发工具</span>
+        </div>
+        <div class="nav-item">
+            <span>代码人生</span>
+        </div>
+        <div class="nav-item">
+            <span>阅读</span>
+        </div>
+        <div class="nav-item">
+            <span>排行榜</span>
+        </div>
+    </div>
+
+    <!-- 主内容区 -->
+    <div class="main-content">
+        <!-- 顶部导航 -->
+        <div class="top-nav">
+            <div class="nav-tab active">推荐</div>
+            <div class="nav-tab">最新</div>
+        </div>
+
+        <!-- 文章列表 -->
+        <div class="article-list">
+            <div class="article-card">
+                <h3 class="article-title">小米正式官宣开源！杀疯了！</h3>
+                <div class="article-meta">
+                    <span>CodeSheep</span>
+                    <span>· 12k阅读</span>
+                    <span>· 137点赞</span>
+                </div>
+            </div>
+
+            <div class="article-card">
+                <h3 class="article-title">2024年终总结：选择错误、加班三月、降薪、面试无果...</h3>
+                <div class="article-meta">
+                    <span>老福同学</span>
+                    <span>· 401阅读</span>
+                    <span>· 16点赞</span>
+                </div>
+            </div>
+
+            <!-- 更多文章卡片 -->
+        </div>
+    </div>
+
+    <!-- 右侧边栏 -->
+    <div class="right-sidebar">
+        <div style="background: white; padding: 16px; border-radius: 4px; margin-bottom: 16px;">
+            <h3>早上好！</h3>
+            <p style="color: #8a919f; font-size: 14px;">点亮在社区的第一天</p>
+        </div>
+    </div>
+</body>
+</html>

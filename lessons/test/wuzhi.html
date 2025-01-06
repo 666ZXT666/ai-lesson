@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>五子棋游戏</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+            margin: 0;
+        }
+        canvas {
+            background-color: #f3d2b5;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        #message {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 20px;
+            color: red;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="game-container">
+        <canvas id="board" width="400" height="400"></canvas>
+        <div id="message"></div>
+    </div>
+
+    <script>
+        const canvas = document.getElementById('board');
+        const ctx = canvas.getContext('2d');
+        const boardSize = 15;
+        const cellSize = canvas.width / boardSize;
+        let currentPlayer = 'white'; // Player starts first
+        let gameBoard = Array.from({ length: boardSize }, () => Array(boardSize).fill(null));
+        let gameOver = false;
+
+        function drawBoard() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            for (let i = 0; i <= boardSize; i++) {
+                ctx.beginPath();
+                ctx.moveTo(i * cellSize, 0);
+                ctx.lineTo(i * cellSize, canvas.height);
+                ctx.stroke();
+
+                ctx.beginPath();
+                ctx.moveTo(0, i * cellSize);
+                ctx.lineTo(canvas.width, i * cellSize);
+                ctx.stroke();
+            }
+        }
+
+        function drawPiece(x, y, player) {
+            ctx.beginPath();
+            ctx.arc((x + 0.5) * cellSize, (y + 0.5) * cellSize, cellSize / 2 - 5, 0, Math.PI * 2);
+            ctx.fillStyle = player;
+            ctx.fill();
+        }
+
+        function checkWin(x, y) {
+            const directions = [
+                { dx: 1, dy: 0 },
+                { dx: 0, dy: 1 },
+                { dx: 1, dy: 1 },
+                { dx: 1, dy: -1 }
+            ];
+
+            for (const direction of directions) {
+                let count = 1;
+                for (let step = 1; step < 5; step++) {
+                    const nx = x + direction.dx * step;
+                    const ny = y + direction.dy * step;
+                    if (nx >= 0 && nx < boardSize && ny >= 0 && ny < boardSize && gameBoard[ny][nx] === currentPlayer) {
+                        count++;
+                    } else {
+                        break;
+                    }
+                }
+                for (let step = 1; step < 5; step++) {
+                    const nx = x - direction.dx * step;
+                    const ny = y - direction.dy * step;
+                    if (nx >= 0 && nx < boardSize && ny >= 0 && ny < boardSize && gameBoard[ny][nx] === currentPlayer) {
+                        count++;
+                    } else {
+                        break;
+                    }
+                }
+                if (count >= 5) return true;
+            }
+            return false;
+        }
+
+        function handleClick(event) {
+            console.log("Click event triggered");
+            if (gameOver || currentPlayer !== 'white') return;
+
+            const rect = canvas.getBoundingClientRect();
+            const x = Math.round((event.clientX - rect.left) / cellSize);
+            const y = Math.round((event.clientY - rect.top) / cellSize);
+
+            console.log(`Clicked at (${x}, ${y})`);
+
+            if (x >= 0 && x < boardSize && y >= 0 && y < boardSize && !gameBoard[y][x]) {
+                gameBoard[y][x] = currentPlayer;
+                drawPiece(x, y, currentPlayer);
+
+                if (checkWin(x, y)) {
+                    document.getElementById('message').innerText = `${currentPlayer} 获胜！`;
+                    document.getElementById('message').style.display = 'block';
+                    gameOver = true;
+                    return;
+                }
+
+                currentPlayer = currentPlayer === 'black' ? 'white' : 'black';
+                aiMove();
+            } else {
+                console.log("Invalid move or already occupied");
+            }
+        }
+
+        function aiMove() {
+            if (gameOver || currentPlayer !== 'black') return;
+
+            let bestScore = -Infinity;
+            let bestMove = null;
+
+            for (let y = 0; y < boardSize; y++) {
+                for (let x = 0; x < boardSize; x++) {
+                    if (!gameBoard[y][x]) {
+                        gameBoard[y][x] = currentPlayer;
+                        const score = minimax(gameBoard, 3, -Infinity, Infinity, false);
+                        gameBoard[y][x] = null;
+
+                        if (score > bestScore) {
+                            bestScore = score;
+                            bestMove = { x, y };
+                        }
+                    }
+                }
+            }
+
+            if (bestMove) {
+                const { x, y } = bestMove;
+                gameBoard[y][x] = currentPlayer;
+                drawPiece(x, y, currentPlayer);
+
+                if (checkWin(x, y)) {
+                    document.getElementById('message').innerText = `${currentPlayer} 获胜！`;
+                    document.getElementById('message').style.display = 'block';
+                    gameOver = true;
+                    return;
+                }
+
+                currentPlayer = currentPlayer === 'black' ? 'white' : 'black';
+            }
+        }
+
+        function minimax(board, depth, alpha, beta, maximizingPlayer) {
+            if (depth === 0) {
+                return evaluateBoard(board);
+            }
+
+            if (maximizingPlayer) {
+                let maxEval = -Infinity;
+                for (let y = 0; y < boardSize; y++) {
+                    for (let x = 0; x < boardSize; x++) {
+                        if (!board[y][x]) {
+                            board[y][x] = 'black';
+                            const eval = minimax(board, depth - 1, alpha, beta, false);
+                            board[y][x] = null;
+                            maxEval = Math.max(maxEval, eval);
+                            alpha = Math.max(alpha, eval);
+                            if (beta <= alpha) break;
+                        }
+                    }
+                }
+                return maxEval;
+            } else {
+                let minEval = Infinity;
+                for (let y = 0; y < boardSize; y++) {
+                    for (let x = 0; x < boardSize; x++) {
+                        if (!board[y][x]) {
+                            board[y][x] = 'white';
+                            const eval = minimax(board, depth - 1, alpha, beta, true);
+                            board[y][x] = null;
+                            minEval = Math.min(minEval, eval);
+                            beta = Math.min(beta, eval);
+                            if (beta <= alpha) break;
+                        }
+                    }
+                }
+                return minEval;
+            }
+        }
+
+        function evaluateBoard(board) {
+            let score = 0;
+
+            const directions = [
+                { dx: 1, dy: 0 },
+                { dx: 0, dy: 1 },
+                { dx: 1, dy: 1 },
+                { dx: 1, dy: -1 }
+            ];
+
+            for (let y = 0; y < boardSize; y++) {
+                for (let x = 0; x < boardSize; x++) {
+                    if (board[y][x]) {
+                        const player = board[y][x];
+                        for (const direction of directions) {
+                            let lineScore = 0;
+                            let emptyCount = 0;
+
+                            for (let step = -4; step <= 4; step++) {
+                                const nx = x + direction.dx * step;
+                                const ny = y + direction.dy * step;
+
+                                if (nx >= 0 && nx < boardSize && ny >= 0 && ny < boardSize) {
+                                    if (step === 0) {
+                                        continue;
+                                    }
+                                    if (board[ny][nx] === player) {
+                                        lineScore++;
+                                    } else if (board[ny][nx] === null) {
+                                        emptyCount++;
+                                    } else {
+                                        break;
+                                    }
+                                } else {
+                                    break;
+                                }
+                            }
+
+                            if (lineScore === 4 && emptyCount >= 1) {
+                                score += player === 'black' ? 10000 : -10000;
+                            } else if (lineScore === 3 && emptyCount >= 2) {
+                                score += player === 'black' ? 1000 : -1000;
+                            } else if (lineScore === 2 && emptyCount >= 3) {
+                                score += player === 'black' ? 100 : -100;
+                            } else if (lineScore === 1 && emptyCount >= 4) {
+                                score += player === 'black' ? 10 : -10;
+                            }
+                        }
+                    }
+                }
+            }
+
+            return score;
+        }
+
+        canvas.addEventListener('click', handleClick);
+        drawBoard();
+    </script>
+</body>
+</html>
+
+
+

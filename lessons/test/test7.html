@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ES5 执行上下文内存图</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .memory-diagram {
+            width: 900px;
+            display: flex;
+            justify-content: space-between;
+            gap: 30px;
+        }
+
+        .scope {
+            width: 200px;
+            text-align: center;
+            padding: 10px;
+            border: 2px solid #ccc;
+            border-radius: 8px;
+            background-color: #e0e0e0;
+        }
+
+        .scope h3 {
+            margin-top: 0;
+        }
+
+        .var-table, .lex-table {
+            margin-top: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .var-table div, .lex-table div {
+            padding: 5px;
+            border-radius: 5px;
+            background-color: #c1c1c1;
+        }
+
+        .var-table .variable, .lex-table .variable {
+            font-weight: bold;
+        }
+
+        .highlight {
+            background-color: #ffcccb;
+        }
+
+        .arrow {
+            position: relative;
+            top: 30px;
+            height: 40px;
+            width: 2px;
+            background-color: #000;
+            margin-left: 90px;
+        }
+
+        .line {
+            display: flex;
+            align-items: center;
+        }
+
+        .line div {
+            width: 80px;
+            text-align: center;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="memory-diagram">
+        <!-- Global Execution Context -->
+        <div class="scope">
+            <h3>Global Context</h3>
+            <div class="lex-table">
+                <div class="variable">Global Lexical Environment</div>
+                <div class="variable">foo (function)</div>
+            </div>
+        </div>
+
+        <!-- foo函数执行上下文 -->
+        <div class="scope">
+            <h3>foo Execution Context</h3>
+            <div class="line">
+                <div class="lex-table">
+                    <div class="variable">Lexical Environment</div>
+                    <div class="variable highlight">arguments (object)</div>
+                    <div class="variable highlight">a (undefined)</div>
+                </div>
+                <div class="arrow"></div>
+                <div class="var-table">
+                    <div class="variable">Variable Environment</div>
+                    <div class="variable highlight">a = 1</div>
+                    <div class="variable">b = undefined (let)</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- foo中的块级作用域 -->
+        <div class="scope">
+            <h3>Block Scope (inside block)</h3>
+            <div class="var-table">
+                <div class="variable">Lexical Environment</div>
+                <div class="variable">b = 3 (let)</div>
+                <div class="variable">c = 4 (var)</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

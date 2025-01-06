@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .box1{
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            margin: 10px;
+        }
+        .box2{
+            margin: 10px;/*box2发生了坍塌*/
+            width: 100px;
+            height: 100px;
+            background-color: green;
+        }
+        #div{
+            margin: 20px;
+            border: 5px solid red;
+            padding: 20px;
+        }
+        .father{
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+        <div class="box2" ></div>
+        <div class="father">
+        <div class="box1" ></div>
+    </div>
+</body>
+</html>

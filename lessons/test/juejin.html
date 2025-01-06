@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>稀土掘金 - 创作者中心</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto;
+            background: #f4f5f5;
+        }
+
+        /* 顶部导航栏 */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+            height: 60px;
+            background: #fff;
+            border-bottom: 1px solid #e4e6eb;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            color: #1e80ff;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .avatar {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+        }
+
+        /* 三栏布局容器 */
+        .container {
+            display: flex;
+            margin: 20px;
+            gap: 20px;
+            min-height: calc(100vh - 100px);
+        }
+
+        /* 左侧边栏 */
+        .sidebar {
+            width: 240px;
+            background: #fff;
+            border-radius: 4px;
+            padding: 20px;
+            flex-shrink: 0; /* 防止侧边栏被压缩 */
+        }
+
+        /* 中间主内容区 */
+        .main-content {
+            flex: 1;
+            background: #fff;
+            border-radius: 4px;
+            padding: 20px;
+            min-width: 0; /* 防止内容溢出 */
+        }
+
+        /* 右侧边栏 */
+        .right-sidebar {
+            width: 240px;
+            flex-shrink: 0; /* 防止侧边栏被压缩 */
+        }
+
+        .write-btn {
+            width: 100%;
+            padding: 12px;
+            background: #1e80ff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+
+        .menu-item {
+            padding: 12px;
+            color: #666;
+            cursor: pointer;
+            margin: 4px 0;
+            border-radius: 4px;
+        }
+
+        .menu-item.active {
+            background: #e8f3ff;
+            color: #1e80ff;
+        }
+
+        .submenu {
+            padding-left: 24px;
+        }
+
+        /* 标签页 */
+        .tabs {
+            display: flex;
+            border-bottom: 1px solid #e4e6eb;
+            margin-bottom: 20px;
+        }
+
+        .tab {
+            padding: 12px 24px;
+            color: #666;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .tab.active {
+            color: #1e80ff;
+        }
+
+        .tab.active::after {
+            content: '';
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: #1e80ff;
+        }
+
+        /* 文章列表 */
+        .article-item {
+            padding: 20px 0;
+            border-bottom: 1px solid #e4e6eb;
+        }
+
+        .article-title {
+            font-size: 16px;
+            color: #333;
+            margin-bottom: 8px;
+            cursor: pointer;
+        }
+
+        .article-meta {
+            font-size: 13px;
+            color: #8a919f;
+        }
+
+        .article-meta span {
+            margin-right: 16px;
+        }
+
+        /* 搜索框 */
+        .search {
+            float: right;
+            width: 300px;
+            margin-bottom: 20px;
+        }
+
+        .search input {
+            width: 100%;
+            padding: 8px 12px;
+            border: 1px solid #e4e6eb;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="logo">稀土掘金</div>
+        <div class="user-info">
+            <span>会员</span>
+            <img src="avatar.jpg" class="avatar" alt="用户头像">
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- 左侧边栏 -->
+        <div class="sidebar">
+            <button class="write-btn">写文章</button>
+            <div class="menu-item">首页</div>
+            <div class="menu-item">
+                内容管理
+                <div class="submenu">
+                    <div class="menu-item active">文章管理</div>
+                    <div class="menu-item">专栏管理</div>
+                    <div class="menu-item">沸点管理</div>
+                </div>
+            </div>
+            <!-- 其他菜单项 -->
+        </div>
+
+        <!-- 中间主内容区 -->
+        <div class="main-content">
+            <div class="search">
+                <input type="text" placeholder="请输入标题关键字">
+            </div>
+
+            <div class="tabs">
+                <div class="tab">文章</div>
+                <div class="tab active">草稿箱(7)</div>
+            </div>
+
+            <div class="tabs">
+                <div class="tab active">全部 (26)</div>
+                <div class="tab">已发布 (26)</div>
+                <div class="tab">审核中 (0)</div>
+                <div class="tab">未通过 (0)</div>
+            </div>
+
+            <div class="article-list">
+                <div class="article-item">
+                    <div class="article-title">JS-手写new</div>
+                    <div class="article-meta">
+                        <span>2024-12-15 20:06</span>
+                        <span>226展现</span>
+                        <span>23阅读</span>
+                        <span>17点赞</span>
+                        <span>0评论</span>
+                        <span>0收藏</span>
+                    </div>
+                </div>
+                <!-- 更多文章项 -->
+            </div>
+        </div>
+
+        <!-- 右侧边栏 -->
+        <div class="right-sidebar">
+            <!-- 右侧内容可以根据需要添加 -->
+        </div>
+    </div>
+</body>
+</html>

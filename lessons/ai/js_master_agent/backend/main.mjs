@@ -3,18 +3,17 @@
 // es5 js 没有模块化能力 简单 不需要模块化， 交给函数就可以了
 import OpenAI from 'openai';
 
-const openai = new OpenAI({
- openai = new openai = new OpenAI(
-    apiKey: ''
-    baseURL: ''
- );
 
+ const openai = new openai = new OpenAI({
+    apiKey: 'abc',
+    baseURL:" dads"
+ });
 const main = async() => {//async 异步函数
     const response = await openai.completions.create({
         model: 'dall',
         max_tokens: 256,
         prompt: '',
-        n：1,
+        n:1,
         size: '1024x1024'
     })
     /
@@ -22,4 +21,4 @@ const main = async() => {//async 异步函数
 }
 
 main();
-console.log('你好')
+console.log('你好');

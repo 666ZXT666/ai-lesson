@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        //阻塞 来动态设置 html font-size
+        function calc(){
+            const w = document.documentElement.clientWidth;
+            document.documentElement.style.fontSize = w / 10 + 'px';
+            console.log(w);
+        }   
+        calc();
+    
+        window.onresize = function(){
+            calc();
+        }
+    </script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        html,body{
+            height: 100%;
+            background-color: rgb(222, 255, 192);
+        }
+        .page{
+            min-height: 100%;
+            background-color: red;
+            font-size: 18px;
+        }
+        ul,li{
+            list-style: none;
+        }
+        .page__hd img{
+            width: 100%;
+        }
+        .page__bd{
+            padding: 0.13333rem;
+        }
+        .good-item{
+
+        }
+        .good-item img{
+            display: inline-block;
+            width: 2.34666rem;
+            height: 2.34666rem;
+        }
+        .flag-tittle{
+            display: inline-block;
+            height: 100%;
+            color: #000;
+            text-decoration: none;
+            vertical-align: top;
+        }
+        .flag-tittle a{
+            color: #000;
+            text-decoration: none;
+
+        }
+
+    </style>
+</head>
+<body>
+    <div class="page">
+        <div class="page__hd">
+                <img src="http://gw.alicdn.com/mt/TB1PNLZKXXXXXaTXXXXXXXXXXXX-750-481.jpg" alt="">
+        </div>
+        <div class="page__bd">
+            <div class="good-list">
+                <div class="good-list__bd">
+                    <ul>
+                        <li class="good-item">
+                            <div class="good-item__bd">
+                                <img src="https://img.alicdn.com/imgextra/i4/2218003154161/O1CN01rMg5fe1gbn2c2wbU0_!!2218003154161.jpg_q50.jpg_.webp" alt="">
+                                <div class="flag-tittle">
+                                    <a href="">夏季长袖女款好看</a>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -15,7 +15,7 @@ html,body{
     left:25px;
     width: 40px;
     height: 40px;
-    background: url(./assert/assert/close.png) no-repeat center / cover;  
+    background: url(./assert/assert/close.png) no-repeat center / cover ;  
 }
 
 .music-btn.off{
@@ -35,6 +35,7 @@ html,body{
 .swiper-slide:nth-child(odd){
     background-color: pink;
 }
+
 .next-view-c{
     z-index: 999;
     background: url(http://s5.music.126.net/static_public/5c21db8d4684556c72180904/gx.4ae36e08269404412ecdb99e9453ca17.svg);
@@ -55,6 +56,7 @@ html,body{
     height: 100%;
     overflow: hidden;
 }
+
 .view.index{
 background: url(http://s5.music.126.net/static_public/5c21db8d4684556c72180904/bgg.d78404cec29e5275598b87d1716f0592.png);
 position: absolute;
@@ -70,4 +72,5 @@ background-position: center;
     height: 218px;
     background: url(http://s5.music.126.net/static_public/5c21db8d4684556c72180904/title@2x.7c87506dfb012b9dfac5fdd39e2ccb06.png);
     background-size:100% ;
+
 }

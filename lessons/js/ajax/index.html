@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ajax</title>
+</head>
+<body>
+    <ul id="member-list"></ul>
+    <script>
+    const oUL = document.getElementById('member-list');
+    const res = fetch("https://api.github.com/orgs/lemoncode/members")
+    .then(res => res.json())
+    .then(data => {
+        console.log(data);
+        data.map(member => `
+        <li>
+            <img src="${member.avatar_url}" alt="${member.login}">
+            <span>${member.login}</span>
+        </li>
+        `)
+    }).join('')
+    oUL.innerHTML = res;
+    </script>
+</body>
+</html>

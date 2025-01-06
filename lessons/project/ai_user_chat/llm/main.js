@@ -11,7 +11,7 @@ const client = new OpenAi({
 });
 
 
-const getCompletion =  async (prompt, model="gpt-3.5-turbo") => {
+const getCompletion =  async (prompt, model="o1-mini") => {
     // 用户提的问题
     const messages = [{
       role: 'user',
@@ -22,7 +22,7 @@ const getCompletion =  async (prompt, model="gpt-3.5-turbo") => {
       model: model,
       messages: messages,
       // LLM 生成内容的随机性
-      temperature: 0.9
+      temperature: 0
     }) 
     return response.choices[0].message.content
   }
@@ -35,8 +35,7 @@ const server = http.createServer(async(req, res) => {
     //设置响应体
     const parsedUrl = url.parse(req.url, true);
     const body = parsedUrl.query;
-    const prompt = `${body.data}
-    请分局上面的JSON数据，回答${body.question}这个问题
+    const prompt = `回答${body.question}这个问题
     }
     `;
     const result = await getCompletion(prompt);

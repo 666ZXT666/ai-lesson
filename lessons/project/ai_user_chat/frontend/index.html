@@ -75,7 +75,7 @@ oForm.addEventListener('submit', function(e) {
     .then(response => response.json())//.then代表数据到达前端 二进制数据转成json
   .then(data => {
     console.log(data.result);
-    document.getElementById('message').innerHTML = data;
+document.getElementById('message').innerHTML = data;
 
 });
 
