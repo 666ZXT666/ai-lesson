@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>模板编译</title>
+</head>
+<body>
+    <script>
+        let template = '我是{{name}},年龄{{age}},性别{{sex}}'
+        let person = {
+            name:'邓子',
+            age:12,
+            sex:'女'
+        }
+// 规则 正则 replace 
+function compile(template,data){
+    // 一个个字符匹配 
+    
+    let reg = /1[0-9]{10}/
+    let result = template.replace(reg,data)
+    console.log(result)
+}
+    </script>
+</body>
+</html>

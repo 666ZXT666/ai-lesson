@@ -1,0 +1,22 @@
+# langchain 魔搭
+  - 国内顶级的AI社区 找开源模型
+  - HuggingFace
+- python notebook .inynb
+  - python 适合nlp 数据分析
+  - 算法 idear\ 试下某个model,随便写 可运行
+- 为何langchain
+  - 方便的在各个大模型切换
+- langchain_openai 
+  - 让我们使用OpenAI 更方便,AI应用保持优秀
+  - model是可以抽象的
+- langchain.schema
+  - 定义了langchain中预置的数据结构
+  - HumanMessage
+  - SystemMessage
+- langchain.prompts
+  - 进入AI全栈领域的标志
+  - 核心模块,prompt 是主要工作
+  - PromptTemplate
+    - from_template 生成prompt模板
+    - format 填充模板
+    

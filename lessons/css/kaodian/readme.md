@@ -43,3 +43,15 @@
 
 - 触发新BFC
   - overflow: hidden 不为visible 水杯盛开水
+
+
+- 页面是平面的
+  BFC 文档流 布局 盒模型 选择器 继承 层叠上下文 ...  为渲染引擎像素(rgb 像素点)计算而服务的
+  - z-index 越大越在上面
+  一层一层计算 叠加起来 
+  - 层叠上下文是HTML的三维概念 发生堆叠 。 z-index受父元素的影响， 如果父元素小的话，z-index就没有效果了
+  -  html DOM树 浏览器解析程序的数据结构（树）
+  - css cssOM 树 
+  - DOM树 + cssOM树 = 渲染树 -> 布局（float,position,flex） -> 绘制 -> 合成(图层)
+  -> 渲染引擎画出来
+  - z-index
