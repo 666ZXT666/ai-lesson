@@ -1,26 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>模板编译</title>
 </head>
+
 <body>
     <script>
         let template = '我是{{name}},年龄{{age}},性别{{sex}}'
         let person = {
-            name:'邓子',
-            age:12,
-            sex:'女'
+            name: '邓子',
+            age: 12,
+            sex: '女'
         }
-// 规则 正则 replace 
-function compile(template,data){
-    // 一个个字符匹配 
-    
-    let reg = /1[0-9]{10}/
-    let result = template.replace(reg,data)
-    console.log(result)
-}
+        // 规则 正则 replace 
+         function compile(template, data){
+            // 一个个字符匹配 
+            // 从字符串中匹配  ^表示从开始匹配  $表示从结束匹配
+            // let reg = /^1[0-9]{10}$/
+            // console.log(reg.test('a11'))
+            //let reg = /\{\{(.+?)\}\}/g
+            // let reg2 = /\{\{([a-z]+)\}\}/
+            // let key = reg2.exec(template)[1];
+            // console.log(key)
+            // console.log(template.match(reg))
+            // console.log(template.match(reg2))
+            // while (reg2.exec(template) != null) {      
+            //     let key = reg2.exec(template)[1];
+            //     let value = data[key]
+            //     template = template.replace(reg2, value)
+            // }
+            // if(reg2.exec(template) != null){
+            //     let key = reg2.exec(template)[1];
+            // let value = data[key]
+            // template = template.replace(reg2, value)
+            // return compile(template, data);
+            // }
+            // else{
+            //     return template
+            // }
+            //return template
+            //let reg2 = /\{\{([a-z]+)\}\}/g;
+            // return template.replace(reg2, function(match, key){
+            //     return data[key]
+            // })
+            return template.replace(/\{\{([a-z]+)\}\}/g, function(match, key){
+                return key in data ? data[key] : match
+            })
+        }
+        console.log(compile(template, person))
     </script>
 </body>
+
 </html>
