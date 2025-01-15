@@ -54,4 +54,27 @@
   - css cssOM 树 
   - DOM树 + cssOM树 = 渲染树 -> 布局（float,position,flex） -> 绘制 -> 合成(图层)
   -> 渲染引擎画出来
-  - z-index
+  - z-index 太多了，性能不好
+  - 父图层管着子图层
+
+- css三种写法 
+  - 行内样式 
+    优先级最高 行内样式 !important 不要多用，不好维护
+    :style={width:width+'px'} 动态样式
+  - 内联样式 
+    少用 不方便复用和管理
+    影响页面加载速度
+  - 外部样式 
+    好维护
+    好复用
+    模块化
+    并发请求，DOM 可以提前解析和CSS 结合， 渲染，页面尽早出来（快）
+  
+
+- stylus 
+  css 预处理器 
+  先写styl,编译成css
+  npm install stylus -g
+  stylus -w 2.styl -o 2.css
+  - 快 stylus 让 css更强大
+  

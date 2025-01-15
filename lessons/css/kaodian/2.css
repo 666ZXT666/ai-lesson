@@ -1,0 +1,26 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.box {
+  width: 100px;
+  height: 100px;
+  background-color: #f00;
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  z-index: 1;
+}
+.box1 {
+  top: 20px;
+  left: 20px;
+  background-color: #f00;
+  z-index: 1;
+}
+.box2 {
+  top: 50px;
+  left: 50px;
+  background-color: #00f;
+  z-index: 2;
+}
