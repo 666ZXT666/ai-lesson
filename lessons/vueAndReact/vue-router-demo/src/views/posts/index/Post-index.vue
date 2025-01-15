@@ -1,6 +1,6 @@
 <template>
     <div>
-        PostIndex
+        内容
         {{ sort }}
     </div>
     </template>

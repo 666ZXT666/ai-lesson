@@ -9,9 +9,9 @@ const name="智普" // 数据
     <header class="page-header">
       <h3 class="brand">{{name}}</h3>
       <nav class="menu">
-        <router-link :to="{name:'home'}">首页</router-link>
-        <router-link :to="{name:'about'}">关于</router-link>
-        <router-link to="/posts/index">post-index</router-link>
+        <router-link class="menu-item" :to="{name:'home'}">首页</router-link>
+        <router-link class="menu-item" :to="{name:'about'}">关于</router-link>
+        <router-link class="menu-item"  to="/posts/index">内容</router-link>
 
       </nav>
     </header>
@@ -23,6 +23,25 @@ const name="智普" // 数据
    </div>
 </template>
 
-<style scoped>
-
+<style lang="stylus" scoped>
+.page
+  padding:32px
+.page-header
+  display flex
+  align-items center
+  border-bottom 1px solid #e1e1e1
+.brand
+  margin-right 32px
+.menu-item
+  display inline-block
+  text-decoration none
+  color #333
+  margin 8px
+  padding 8px 16px
+.page-body
+  margin 24px 0
+.router-link-active
+  color #505050
+  background-color #eeeeee
+  border-radius 4px
 </style>

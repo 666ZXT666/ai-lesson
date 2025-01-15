@@ -39,3 +39,5 @@
   前进 后退
   导航  = url + history navigator
   
+  - stylus
+    npm i -d stylus 当前项目安装 stylus包
