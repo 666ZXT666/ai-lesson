@@ -11,6 +11,8 @@
   },
   "dependencies": {
     "element3": "^0.0.40",
+    "pinia": "^2.3.0",
+    "stylus": "^0.64.0",
     "vue-router": "^4.5.0"
   },
   "devDependencies": {
