@@ -42,12 +42,12 @@ const router = createRouter({
 // 路由守卫
 router.beforeEach((to,from,next)=>{
     document.title = to.meta.title || ''
-    if(to.meta.requireLogin){
-        next('/login')
-        return
-    }else{
+    // if(to.meta.requireLogin){
+    //     next('/login')
+    //     return
+    // }
         next()
-    }
+    
 })
 
 export default router

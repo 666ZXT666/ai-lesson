@@ -6,7 +6,6 @@ const router = useRouter()
 
 <template>
   <div>
-    <el-button type="primary">按钮</el-button>
     <router-view></router-view>
   </div>
 </template>

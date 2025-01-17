@@ -37,3 +37,25 @@
     最佳用户体验就是快
     按需加载页面级别组件 函数引入方式 ()=>import('')
   - 路由守卫
+- 表单组件
+  - 看文档
+  - :model 收集数据
+  - ref 获取表单对象
+    - 要获取DOM元素，组件对象
+    - 调用相应的方法
+    - template 用ref标记DOM
+    - const formRef = ref(null)
+  - 表单的校验
+    - rules
+    - items prop
+    - valid 方法 boolean
+
+- 布局组件
+  - ElContainer
+  - ElHeader
+  - ElAside
+  - ElMain
+  - ElRow
+  - ElCol
+  - ElMenu
+  

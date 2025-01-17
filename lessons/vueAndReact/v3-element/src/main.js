@@ -1,16 +1,37 @@
 import { createApp } from 'vue'
 import './style.css'
 import App from './App.vue'
-import Element3 from 'element3'
 import {createPinia} from 'pinia'
 import{
-    ElButton
-} from 'element3'
-import 'element3/lib/theme-chalk/index.css'
+    ElButton,
+    ElForm,
+    ElFormItem,
+    ElInput,
+    ElCheckbox,
+    ElContainer,
+    ElHeader,
+    ElMenu,
+    ElMenuItem,
+    ElSubMenu,
+    ElMain,
+    ElAside
+} from 'element-plus'
+import 'element-plus/dist/index.css'
 import router from './router'
 
 createApp(App)
 .use(router)
 .use(createPinia())
 .use(ElButton)
+.use(ElForm)
+.use(ElFormItem)
+.use(ElInput)
+.use(ElCheckbox)
+.use(ElContainer)
+.use(ElHeader)
+.use(ElMenu)
+.use(ElMenuItem)
+.use(ElSubMenu)
+.use(ElMain)
+.use(ElAside)
 .mount('#app')
