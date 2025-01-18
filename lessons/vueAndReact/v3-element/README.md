@@ -59,3 +59,19 @@
   - ElCol
   - ElMenu
   
+
+- 登录流程
+  - 前端提交登录
+    - login.vue 组件化表单
+    - 调用api/login接口
+      - 项目多了一层目录 api 目录会管理应用的所有接口
+    -  统一配置 axios 管理请求
+- 后端验证
+  - mock 模拟后端
+    apifox 跳过前端 模拟get/post 等请求
+    前端 mock 跳过后端 模拟后端请求 
+
+- jwt 登录
+  - npm install jsonwebtoken
+  - sign 签名
+  - token -> veryfy 方法 

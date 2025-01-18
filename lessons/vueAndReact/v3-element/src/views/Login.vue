@@ -23,6 +23,7 @@
 </template>
 <script setup>
 import {ref ,reactive} from 'vue'
+import {login} from '../api'
 
 const loading = ref(false)
 const formRef = ref(null);
@@ -34,10 +35,14 @@ const onSubmit = async() => {
     console.log(formRef.value)
     loading.value = true
     await formRef.value.validate(
-        (valid) => {
+        async (valid) => {
             if(valid){
+                loading.value = false
+                const res = await login(form);
                 console.log('验证成功')
             }else{
+                loading.value = false
+
                 console.log('验证失败')
             }
         }
