@@ -24,6 +24,9 @@
 <script setup>
 import {ref ,reactive} from 'vue'
 import {login} from '../api'
+import {useRouter} from 'vue-router'
+const router = useRouter()
+
 
 const loading = ref(false)
 const formRef = ref(null);
@@ -31,6 +34,7 @@ const form = reactive({
     username:'',
     password:''
 })
+
 const onSubmit = async() => {
     console.log(formRef.value)
     loading.value = true
@@ -38,8 +42,13 @@ const onSubmit = async() => {
         async (valid) => {
             if(valid){
                 loading.value = false
-                const res = await login(form);
-                console.log('验证成功')
+                const res = await login(form)
+                console.log(res.data.code)
+                if(res.data.code === 200){
+                    console.log('跳转');
+                    localStorage.setItem('token',res.data.data.token)
+                    router.push('/');
+                }
             }else{
                 loading.value = false
 

@@ -75,3 +75,12 @@
   - npm install jsonwebtoken
   - sign 签名
   - token -> veryfy 方法 
+
+- mock 后端模拟
+  - vitejs 启用 mock 插件
+    - npm install vite-plugin-mock --save-dev
+    - 在vite.config.js 中启用插件
+    - 在src/mock 目录下创建 mock.js 文件
+    - 在main.js 中引入 mock.js 文件
+
+- 需要验证用户

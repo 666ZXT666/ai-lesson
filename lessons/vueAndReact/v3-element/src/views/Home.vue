@@ -32,6 +32,9 @@
             <div>
                 <router-link to="/login">Login</router-link>
             </div>
+            <div>
+                <router-link to="/about">About</router-link>
+            </div>
         </el-aside>
         <el-main>
             <router-view></router-view>

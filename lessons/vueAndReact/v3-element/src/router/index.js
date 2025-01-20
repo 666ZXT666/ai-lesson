@@ -43,7 +43,11 @@ const router = createRouter({
 router.beforeEach((to,from,next)=>{
     document.title = to.meta.title || ''
     if(to.meta.requireLogin){
-        next('/login')
+        if(localStorage.getItem('token')){
+            next()
+        }else{
+            next('/login')
+        }
         return
     }
         next()

@@ -1,7 +1,28 @@
 import pkg from 'jsonwebtoken'
-const { sign } = pkg
+const { sign,verify } = pkg
 
 export default [
+    {
+        url: '/userInfo',
+        method: 'get',
+        response: (req, res) => {
+            console.log(req.headers['authorization'].split(' ')[1]);
+            const token = req.headers['authorization'].split(' ')[1]
+            try {
+                const decoded = verify(token, 'secret')
+                console.log(decoded)
+            } catch (error) {
+                console.log(error)
+            }
+            return {
+                data: {
+                    username: 'admin'
+                },
+                code: 200,
+                message: 'success'
+            }
+        }
+    },
     {
         url: '/login',
         method: 'post',
