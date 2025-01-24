@@ -11,7 +11,6 @@ const rootRoutes = [
     },
     component: () => import('../views/Home.vue'),
   },
-
   {
     path: '/assistant',
     name: 'Assistant',
